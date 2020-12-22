@@ -18,6 +18,13 @@ RUN apt-get update \
     && apt-get install -y locales \
     && locale-gen ja_JP.UTF-8 \
 	&& localedef -f UTF-8 -i ja_JP ja_JP.utf8
+#aws-cli-v2
+RUN apt-get update \
+	&& apt-get install -y unzip less && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install
+
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
 ENV LC_ALL=ja_JP.UTF-8
